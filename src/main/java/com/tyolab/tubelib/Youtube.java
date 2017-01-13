@@ -1,5 +1,5 @@
 package com.tyolab.tubelib;
 
-public class YoutubeThumbnail {
+public class Youtube {
 
 }
