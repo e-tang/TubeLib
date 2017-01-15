@@ -10,6 +10,28 @@ import java.net.URISyntaxException;
 
 public class VideoItem implements Serializable {
 
+    /**
+     *
+     */
+
+    private int INDEX_ONE  = 0;
+
+    private int INDEX_TWO  = 1;
+
+    private int INDEX_THREE  = 2;
+
+    private int INDEX_FOUR  = 3;
+
+    private int INDEX_MEDIUM_QUALITY  = 4;
+
+    private int INDEX_MAX_QUALITY = 6;
+
+    private int INDEX_HIGH_QUALITY = 5;
+
+    /**
+     *
+     */
+
     private static long count = 0;
 
     private String title;
