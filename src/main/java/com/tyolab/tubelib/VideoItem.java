@@ -10,28 +10,6 @@ import java.net.URISyntaxException;
 
 public class VideoItem implements Serializable {
 
-    /**
-     *
-     */
-
-    private int INDEX_ONE  = 0;
-
-    private int INDEX_TWO  = 1;
-
-    private int INDEX_THREE  = 2;
-
-    private int INDEX_FOUR  = 3;
-
-    private int INDEX_MEDIUM_QUALITY  = 4;
-
-    private int INDEX_MAX_QUALITY = 6;
-
-    private int INDEX_HIGH_QUALITY = 5;
-
-    /**
-     *
-     */
-
     private static long count = 0;
 
     private String title;
@@ -42,26 +20,16 @@ public class VideoItem implements Serializable {
 
     private String cardImageUrl;
 
-    private String videoUrl;
+    private String url;
 
-    private String studio;
+    private String publisher;
 
     private String category;
 
     private String id;
 
-    private String url;
-
-    /**
-     * a whole list of thumbnail urls
-     *
-     * 1, 2, 3, 4
-     *
-     * md
-     */
-    private String[] thumbnailUrls;
-
-    public VideoItem() {
+    public VideoItem(String id) {
+        this.id = id;
     }
 
     public static long getCount() {
@@ -96,20 +64,20 @@ public class VideoItem implements Serializable {
         this.description = description;
     }
 
-    public String getStudio() {
-        return studio;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setStudio(String studio) {
-        this.studio = studio;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getBackgroundImageUrl() {
@@ -157,7 +125,7 @@ public class VideoItem implements Serializable {
         return "Video {" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", videoUrl='" + videoUrl + '\'' +
+                ", url='" + url + '\'' +
                 ", backgroundImageUrl='" + bgImageUrl + '\'' +
                 ", backgroundImageURI='" + getBackgroundImageURI().toString() + '\'' +
                 ", cardImageUrl='" + cardImageUrl + '\'' +
