@@ -44,4 +44,12 @@ public class YoutubeVideo extends VideoItem {
         super(id);
     }
 
+    public YoutubeVideo(String id, String url) {
+        this(id);
+        this.setUrl(url);
+    }
+
+    public void createThumbnailImages() {
+
+    }
 }
