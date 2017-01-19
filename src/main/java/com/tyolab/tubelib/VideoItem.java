@@ -10,11 +10,9 @@ import java.net.URISyntaxException;
 
 public class VideoItem implements Serializable {
 
-    private static long count = 0;
+    private String title = "";
 
-    private String title;
-
-    private String description;
+    private String description ="";
 
     private String bgImageUrl;
 
@@ -22,22 +20,14 @@ public class VideoItem implements Serializable {
 
     private String url;
 
-    private String publisher;
+    private String publisher = "";
 
-    private String category;
+    private String category = "";
 
     private String id;
 
     public VideoItem(String id) {
         this.id = id;
-    }
-
-    public static long getCount() {
-        return count;
-    }
-
-    public static void incCount() {
-        count++;
     }
 
     public String getId() {
@@ -128,7 +118,6 @@ public class VideoItem implements Serializable {
                 ", url='" + url + '\'' +
                 ", backgroundImageUrl='" + bgImageUrl + '\'' +
                 ", backgroundImageURI='" + getBackgroundImageURI().toString() + '\'' +
-                ", cardImageUrl='" + cardImageUrl + '\'' +
                 '}';
     }
 }
