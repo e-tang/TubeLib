@@ -1,22 +1,16 @@
 package com.tyolab.tubelib;
 
 import java.io.Serializable;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 /**
  * Created by "Eric Tang (dev@tyo.com.au)" on 15/1/17.
  */
 
-public class VideoItem implements Serializable {
+public class VideoItem extends ItemBase implements Serializable {
 
     private String title = "";
 
     private String description ="";
-
-    private String bgImageUrl;
-
-    private String cardImageUrl;
 
     private String url;
 
@@ -70,22 +64,6 @@ public class VideoItem implements Serializable {
         this.url = url;
     }
 
-    public String getBackgroundImageUrl() {
-        return bgImageUrl;
-    }
-
-    public void setBackgroundImageUrl(String bgImageUrl) {
-        this.bgImageUrl = bgImageUrl;
-    }
-
-    public String getCardImageUrl() {
-        return cardImageUrl;
-    }
-
-    public void setCardImageUrl(String cardImageUrl) {
-        this.cardImageUrl = cardImageUrl;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -94,29 +72,13 @@ public class VideoItem implements Serializable {
         this.category = category;
     }
 
-    public URI getBackgroundImageURI() {
-        try {
-            return new URI(getBackgroundImageUrl());
-        } catch (URISyntaxException e) {
-            return null;
-        }
-    }
-
-    public URI getCardImageURI() {
-        try {
-            return new URI(getCardImageUrl());
-        } catch (URISyntaxException e) {
-            return null;
-        }
-    }
-
     @Override
     public String toString() {
         return "Video {" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +
-                ", backgroundImageUrl='" + bgImageUrl + '\'' +
+                ", backgroundImageUrl='" + getBackgroundImageUrl() + '\'' +
                 ", backgroundImageURI='" + getBackgroundImageURI().toString() + '\'' +
                 '}';
     }
