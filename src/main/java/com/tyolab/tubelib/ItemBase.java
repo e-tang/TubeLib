@@ -1,8 +1,5 @@
 package com.tyolab.tubelib;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 /**
  * Created by "Eric Tang (dev@tyo.com.au)" on 21/1/17.
  */
@@ -29,19 +26,4 @@ public class ItemBase {
         this.cardImageUrl = cardImageUrl;
     }
 
-    public URI getBackgroundImageURI() {
-        try {
-            return new URI(getBackgroundImageUrl());
-        } catch (URISyntaxException e) {
-            return null;
-        }
-    }
-
-    public URI getCardImageURI() {
-        try {
-            return new URI(getCardImageUrl());
-        } catch (URISyntaxException e) {
-            return null;
-        }
-    }
 }

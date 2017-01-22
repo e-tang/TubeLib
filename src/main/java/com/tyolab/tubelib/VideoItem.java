@@ -79,7 +79,6 @@ public class VideoItem extends ItemBase implements Serializable {
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +
                 ", backgroundImageUrl='" + getBackgroundImageUrl() + '\'' +
-                ", backgroundImageURI='" + getBackgroundImageURI().toString() + '\'' +
                 '}';
     }
 }
