@@ -6,11 +6,35 @@ package com.tyolab.tubelib;
 
 public class YoutubeVideo extends VideoItem {
 
+    public static final int IMAGE_QUALITY_ONE = 1;
+
+    public static final int IMAGE_QUALITY_TWO = 2;
+
+    public static final int IMAGE_QUALITY_THREE = 3;
+
+    public static final int IMAGE_QUALITY_FOUR = 4;
+
+    public static final int IMAGE_QUALITY_DEFAUT = 40;
+
+    public static final int IMAGE_QUALITY_STANDARD = 50;
+
+    public static final int IMAGE_QUALITY_HD = 60;
+
+    public static final int IMAGE_QUALITY_MEDIUM = 70;
+
+    public static final int IMAGE_QUALITY_MAXIMUM = 80;
+
     private static String protocol = "https";
     private static String host = "img.youtube.com";
     private static String path = "/vi/";
 
     private static String imgExtension = "jpg";
+
+    private static int quality = IMAGE_QUALITY_MEDIUM;
+
+    public static void setQuality(int quality) {
+        YoutubeVideo.quality = quality;
+    }
 
     public static void setYoutubeHost(String host, String path, String protocol) {
         YoutubeVideo.path = path;
@@ -77,27 +101,72 @@ public class YoutubeVideo extends VideoItem {
 //    }
 
     private String getThumbnailWithName(String name) {
-        return baseUrl + getId() + "/" + name + "." + imgExtension;
+        return getThumbnailWithName(getId(), name);
     }
 
-    public String getThumbnail(int index) {
-        return getThumbnailWithName(String.valueOf(index));
+    private static String getThumbnailWithName(String id, String name) {
+        return baseUrl + id + "/" + name + "." + imgExtension;
+    }
+
+    public static String getThumbnail(String id) {
+        String url = getThumbnailDefault(id);
+        switch (quality) {
+            case IMAGE_QUALITY_DEFAUT:
+                url = getThumbnailDefault(id);
+                break;
+
+            case IMAGE_QUALITY_HD:
+                url = getThumbnailHighQuality(id);
+                break;
+
+            case IMAGE_QUALITY_MEDIUM:
+                url = getThumbnailMediumQuality(id);
+                break;
+
+            case IMAGE_QUALITY_MAXIMUM:
+                url = getThumbnailMaximunResolution(id);
+                break;
+
+            case IMAGE_QUALITY_ONE:
+                url = getThumbnailOne(id);
+                break;
+
+            case IMAGE_QUALITY_THREE:
+                url = getThumbnailThree(id);
+                break;
+
+            case IMAGE_QUALITY_TWO:
+                url = getThumbnailTwo(id);
+                break;
+
+            case IMAGE_QUALITY_FOUR:
+                url = getThumbnailFour(id);
+                break;
+
+            case IMAGE_QUALITY_STANDARD:
+                break;
+        }
+        return url;
+    }
+
+    public static String getThumbnailWithIndex(String id, int index) {
+        return getThumbnailWithName(id, String.valueOf(index));
     }
 
     public String getThumbnailOne() {
-        return getThumbnail(1);
+        return getThumbnailOne(getId());
     }
 
     public String getThumbnailTwo() {
-        return getThumbnail(2);
+        return getThumbnailTwo(getId());
     }
 
     public String getThumbnailThree() {
-        return getThumbnail(3);
+        return getThumbnailThree(getId());
     }
 
     public String getThumbnailFour() {
-        return getThumbnail(4);
+        return getThumbnailFour(getId());
     }
 
     public String getThumbnailDefault() {
@@ -112,11 +181,47 @@ public class YoutubeVideo extends VideoItem {
         return getThumbnailWithName("sddefault");
     }
 
+    public static String getThumbnailOne(String id) {
+        return getThumbnailWithIndex(id, 1);
+    }
+
+    public static String getThumbnailTwo(String id) {
+        return getThumbnailWithIndex(id, 2);
+    }
+
+    public static String getThumbnailThree(String id) {
+        return getThumbnailWithIndex(id, 3);
+    }
+
+    public static String getThumbnailFour(String id) {
+        return getThumbnailWithIndex(id, 4);
+    }
+
+    public static String getThumbnailDefault(String id) {
+        return getThumbnailWithName(id, "default");
+    }
+
+    public static String getThumbnailHighQuality(String id) {
+        return getThumbnailWithName(id, "hqdefault");
+    }
+
+    public static String getThumbnailStandard(String id) {
+        return getThumbnailWithName(id, "sddefault");
+    }
+
+    public static String getThumbnailMediumQuality(String id) {
+        return getThumbnailWithName(id, "mqdefault");
+    }
+
     public String getThumbnailMediumQuality() {
-        return getThumbnailWithName("mqdefault");
+        return getThumbnailMediumQuality(getId());
+    }
+
+    public static String getThumbnailMaximunResolution(String id) {
+        return getThumbnailWithName(id, "maxresdefault");
     }
 
     public String getThumbnailMaximunResolution() {
-        return getThumbnailWithName("maxresdefault");
+        return getThumbnailMaximunResolution(getId());
     }
 }
